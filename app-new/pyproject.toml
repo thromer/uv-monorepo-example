@@ -1,7 +1,7 @@
 [project]
 name = "app-new"
 version = "0.1.1"
-description = "Add your description here"
+description = "Sample app"
 authors = [
     { name = "Ted Romer", email = "tromer@gmail.com" }
 ]

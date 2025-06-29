@@ -17,15 +17,15 @@ ENV UV_CACHE_DIR=/tmp/uv/cache
 # ENV UV_PROJECT_ENVIRONMENT=/app 
 
 COPY lib-new lib-new
-RUN uv --directory=lib-new export --format requirements.txt --no-editable --frozen | sed -e 's@^\.@# Elided: .@' /tmp/lib-new-constraints.txt 
+RUN uv --directory=lib-new export --format requirements.txt --no-editable --frozen | sed -e 's@^\.@# Elided: .@' > /tmp/lib-new-constraints.txt
 RUN uv --directory=lib-new build -b /tmp/lib-new-constraints.txt -o /tmp/dist --wheel
 
 COPY app-new app-new
-RUN uv --directory=app-new export --format requirements.txt --no-editable --frozen | sed -e 's@^\.@# Elided: .@' /tmp/app-new-constraints.txt 
+RUN uv --directory=app-new export --format requirements.txt --no-editable --frozen | sed -e 's@^\.@# Elided: .@' > /tmp/app-new-constraints.txt
 RUN uv --directory=app-new build -b /tmp/app-new-constraints.txt -o /tmp/dist --wheel
 
-RUN pip install --no-cache-dir --prefix=python-packages /tmp/dist/*.whl
-RUN PYTHONPATH=python-packages/lib/python3.12/site-packages python -m pip freeze
+RUN pip install --no-cache-dir --prefix=python-packages /tmp/dist/*.whl && \
+    PYTHONPATH=python-packages/lib/python3.12/site-packages python -m pip freeze
 
 # Run
 FROM scratch

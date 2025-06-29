@@ -2,7 +2,7 @@
 **/*.dylib
 **/*.exe
 **/*.out
-**/*.pyc  # TODO someday ship these for faster execution.
+**/*.pyc
 **/*.so
 **/*.test
 **/*~
