@@ -1,0 +1,21 @@
+[project]
+name = "app-new"
+version = "0.1.1"
+description = "Add your description here"
+authors = [
+    { name = "Ted Romer", email = "tromer@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "lib-new",
+]
+
+[project.scripts]
+app-new = "app_new:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+lib-new = { path = "../lib-new", editable = true }

@@ -1,0 +1,20 @@
+**/*.dll
+**/*.dylib
+**/*.exe
+**/*.out
+**/*.pyc  # TODO someday ship these for faster execution.
+**/*.so
+**/*.test
+**/*~
+**/__pycache__
+.dockerignore
+.gcloudignore
+.git
+.github
+.gitignore
+.mypy_cache
+.pytest_cache
+.ruff_cache
+.venv
+Dockerfile*
+venv
