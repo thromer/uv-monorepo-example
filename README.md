@@ -10,11 +10,7 @@ uv --directory app-new lock
 ```
 
 ```
-docker build -t monorepo -f Dockerfile .
-docker build -t monorepo.merged -f Dockerfile.merged . && docker run monorepo.merged
-```
-
-```
-docker build -t monorepo.1 -f Dockerfile.1 .
-docker build -t monorepo.1.merged -f Dockerfile.1.merged . && docker run monorepo.1.merged
+docker build -t monorepo -f Dockerfile . &&
+    docker build -t monorepo.merged -f Dockerfile.merged . &&
+    docker run --rm monorepo.merged
 ```

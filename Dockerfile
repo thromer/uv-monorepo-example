@@ -21,9 +21,9 @@ COPY app-new app-new
 
 # TODO convert to a loop
 RUN uv --directory=lib-new export --format requirements.txt --no-editable --frozen | sed -e 's@^\.@# Elided: .@' > /tmp/lib-new-constraints.txt && \
-    RUN uv --directory=lib-new build -b /tmp/lib-new-constraints.txt -o /tmp/dist --wheel
+    uv --directory=lib-new build -b /tmp/lib-new-constraints.txt -o /tmp/dist --wheel
 RUN uv --directory=app-new export --format requirements.txt --no-editable --frozen | sed -e 's@^\.@# Elided: .@' > /tmp/app-new-constraints.txt && \
-    RUN uv --directory=app-new build -b /tmp/app-new-constraints.txt -o /tmp/dist --wheel
+    uv --directory=app-new build -b /tmp/app-new-constraints.txt -o /tmp/dist --wheel
 
 RUN pip install --no-cache-dir --prefix=python-packages /tmp/dist/*.whl && \
     PYTHONPATH=python-packages/lib/python3.12/site-packages python -m pip freeze
