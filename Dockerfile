@@ -27,6 +27,8 @@ RUN uv --directory=app-new build -b /tmp/app-new-constraints.txt -o /tmp/dist --
 RUN pip install --no-cache-dir --prefix=python-packages /tmp/dist/*.whl && \
     PYTHONPATH=python-packages/lib/python3.12/site-packages python -m pip freeze
 
+RUN find python-packages
+
 # Run
 FROM scratch
 COPY --from=builder /pip/python-packages /opt/python

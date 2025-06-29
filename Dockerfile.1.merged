@@ -1,0 +1,14 @@
+# Simulate deployed service for local testing.
+FROM us-west1-docker.pkg.dev/serverless-runtimes/google-22/runtimes/python312
+
+COPY --from=monorepo.1:latest /opt /opt
+COPY --from=monorepo.1:latest /workspace /workspace
+
+ENV PYTHONPATH=/opt/python/lib/python3.12/site-packages
+ENV PATH=/opt/python/bin:$PATH
+
+WORKDIR /workspace
+
+USER www-data
+
+CMD ["app-new"]
