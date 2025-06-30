@@ -1,0 +1,12 @@
+[project]
+name = "uv-monorepo-example"
+version = "0.1.0"
+
+[tool.uv.workspace]
+members = ["a1", "a2", "l1", "l2"]
+
+[tool.uv.sources]
+# a1 = { workspace = true }
+# a2 = { workspace = true }
+l1 = { workspace = true }
+l2 = { workspace = true }
