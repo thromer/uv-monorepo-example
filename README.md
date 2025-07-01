@@ -1,3 +1,16 @@
+Bootstrap
+
+Once per machine
+```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Once per repo
+```
+uv init .
+uv sync
+```
+
 Maybe a (slightly?) different approach will work, WIP [Claude conversation](https://claude.ai/chat/414e992f-a883-4721-8283-8bdb7e961a01)
 
 ```
