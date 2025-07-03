@@ -1,4 +1,5 @@
 **/*.dll
+**/.dockerignore
 **/*.dylib
 **/*.exe
 **/*.out
