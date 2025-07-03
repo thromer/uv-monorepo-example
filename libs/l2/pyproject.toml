@@ -8,6 +8,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "pyright>0",
     "pytest>0",
 ]
 
