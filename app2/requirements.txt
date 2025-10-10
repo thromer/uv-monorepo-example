@@ -1,0 +1,12 @@
+-e ../lib
+annotated-types==0.7.0
+beautifulsoup4==4.13.4
+pydantic==2.11.7
+pydantic-core==2.33.2
+python-dateutil==2.9.0.post0
+six==1.17.0
+soupsieve==2.7
+typing-extensions==4.14.0
+typing-inspection==0.4.1
+urllib3==2.5.0
+ynab==1.4.0

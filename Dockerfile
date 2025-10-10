@@ -10,11 +10,9 @@ WORKDIR /pip
 
 ENV UV_COMPILE_BYTECODE=1 \
     UV_LINK_MODE=copy \
-    UV_PYTHON=/opt/python3.12/bin/python3.12
-
-ENV UV_CACHE_DIR=/tmp/uv/cache
-# ENV UV_SYSTEM_PYTHON=1
-# ENV UV_PROJECT_ENVIRONMENT=/app 
+    UV_PYTHON=/opt/python3.12/bin/python3.12 \
+    UV_CACHE_DIR=/tmp/uv/cache \
+    UV_NO_EDITABLE=1
 
 COPY lib-new lib-new
 RUN uv --directory=lib-new export --format requirements.txt --no-editable --frozen | sed -e 's@^\.@# Elided: .@' > /tmp/lib-new-constraints.txt && \

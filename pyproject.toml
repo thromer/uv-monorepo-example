@@ -1,0 +1,96 @@
+# [project]
+# name = "ynab-fidelity"
+# version = "0.1.0"
+# requires-python = ">=3.11"
+# dependencies = []
+# [dependency-groups]
+# dev = [
+#    "pyright>=1.1.402",
+#    "pytest>=8.4.1",
+#    "ruff>=0.12.1",
+# ]
+
+[tool.pyright]
+include = ["src", "tests"]
+stubPath = "stubs"
+reportMissingImports = "error"
+reportMissingTypeStubs = false
+# TODO maybe be more surgical
+reportExplicitAny = false
+reportAny = false
+# TODO try re-enabling these maybe
+reportUnknownParameterType = false
+reportUnknownArgumentType = false
+reportMissingParameterType = false
+reportUnknownMemberType = false
+
+# TODO a lot of this is probably redundant with the default or not what we want
+[tool.ruff]
+# Set the maximum line length to match Black's default
+line-length = 127
+target-version = "py311"
+
+[tool.ruff.lint]
+# Enable essential rule sets for preventing bad merges
+select = [
+#    "E",    # pycodestyle errors
+#    "W",    # pycodestyle warnings
+    "F",    # Pyflakes
+#    "I",    # isort
+#    "N",    # pep8-naming
+#    "UP",   # pyupgrade
+#    "B",    # flake8-bugbear
+#    "A",    # flake8-builtins
+#    "C4",   # flake8-comprehensions
+#    "T20",  # flake8-print
+#    "SIM",  # flake8-simplify
+#    "ARG",  # flake8-unused-arguments
+#    "PTH",  # flake8-use-pathlib
+#    "PL",   # Pylint
+#    "RUF",  # Ruff-specific rules
+]
+
+# Ignore specific rules that might be too strict for CI
+ignore = [
+    "F401",
+    "F541",
+#     "E501",   # Line too long (handled by formatter)
+#     "PLR0913", # Too many arguments
+#     "PLR0912", # Too many branches
+#     "PLR0915", # Too many statements
+#     "ARG002",  # Unused method argument
+#     "N806",    # Variable in function should be lowercase (for dataclasses)
+]
+
+# Allow fix for all enabled rules
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.lint.per-file-ignores]
+# Tests can use assertions and fixtures
+"tests/**/*.py" = ["S101", "ARG001", "PLR2004"]
+# Scripts can use print statements
+"scripts/**/*.py" = ["T20"]
+# __init__.py files can have unused imports
+"__init__.py" = ["F401"]
+
+[tool.ruff.lint.isort]
+# known-first-party = ["your_package_name"]  # Replace with your package name
+force-single-line = false
+lines-after-imports = 2
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers"
+
+[tool.ruff.format]
+# Use double quotes for strings
+quote-style = "double"
+# Indent with spaces
+indent-style = "space"
+# Respect magic trailing commas
+skip-magic-trailing-comma = false
+# Automatically detect line endings
+line-ending = "auto"
